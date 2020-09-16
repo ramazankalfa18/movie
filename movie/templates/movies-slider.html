@@ -1,0 +1,46 @@
+{% load static %}
+<div class="movie-items  full-width">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="title-hd">
+				<h2>in theater</h2>
+				<a href="#" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
+			</div>
+			<div class="tabs">
+				<ul class="tab-links">
+					<li class="active"><a href="#tab1-h2">#Popular</a></li>
+				</ul>
+
+			    <div class="tab-content">
+			        <div id="tab1-h2" class="tab active">
+			            <div class="row">
+			            	<div class="slick-multiItem2">
+
+									{% for i in movies %}
+			            		<div class="slide-it">
+			            			<div class="movie-item">
+				            			<div class="mv-img">
+				            					<img src="{{i.image}}" alt="">
+				            			</div>
+				            			<div class="hvr-inner">
+				            				<a  href="moviesingle.html"> Tıklayınız. <i class="ion-android-arrow-dropright"></i> </a>
+				            			</div>
+				            			<div class="title-in">
+				            				<h6><a href="#">{{i.movie_name}}</a></h6>
+				            				<p><i class="ion-android-star"></i><span>{{i.imdb_reyting}}</span> /10</p>
+				            			</div>
+				            		</div>
+			            		</div>
+									{% endfor %}
+
+			            	</div>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!--CATEGORY END-->
