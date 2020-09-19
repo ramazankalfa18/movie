@@ -2,20 +2,21 @@
 <div class="slider sliderv2">
 	<div class="container">
 		<div class="row">
+
 	    	<div class="slider-single-item">
 				{% for i in movies %}
-
+				{% if forloop.counter <= 10 %}
 	    		<div class="movie-item">
 	    			<div class="row">
 	    				<div class="col-md-8 col-sm-12 col-xs-12">
 	    					<div class="title-in">
 			    				<div class="cate">
-									{% for speaker in i.Category.all %}
-			    						<span class="orange"><a href="#">{{speaker}}</a></span>
+									{% for speaker in i.category.all %}
+			    						<span class="orange"><a href="{% url 'CategorySearch' speaker.id %}">{{speaker}}</a></span>
 									{% endfor %}
 			    				</div>
 			    				<h1><a href="#">{{i.movie_name}}
-									<span>2015</span></a></h1>
+									<span>{{i.release_date.year}} </span></a></h1>
 								<div class="social-btn">
 									<a href="#" class="parent-btn"><i class="ion-play"></i> Watch Trailer</a>
 									<a href="#" class="parent-btn"><i class="ion-heart"></i> Add to Favorite</a>
@@ -51,6 +52,7 @@
 		    			</div>
 	    			</div>
 	    		</div>
+				{% endif %}
 				{% endfor %}
 	    	</div>
 	    </div>

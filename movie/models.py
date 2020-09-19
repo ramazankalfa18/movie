@@ -1,5 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from django.urls import reverse
+from django.utils.text import slugify
 
 
 
@@ -17,8 +19,13 @@ class Movie(models.Model):
     publishing_date = models.DateTimeField(auto_now_add=True,verbose_name='Oluşturma tarihi',null=True)
     created = models.BooleanField(null=True, default=True,verbose_name='Film yayındamı')
     runtime = models.CharField (max_length = 50 , verbose_name='film Süresi', null=True)
-    Category = models.ManyToManyField('Category',verbose_name='Kategori',related_name='Movie')
-   
+    category = models.ManyToManyField('Category',verbose_name='Kategori',related_name='Movie')
+    slug = models.SlugField(max_length=100,unique=True,null=False)
+    url = models.CharField(max_length=1000 ,null=True, verbose_name="Film Url")
+
+    def get_absolute_url(self):
+        return reverse('Movie:movie.name', kwargs={'slug': self.slug})
+
     def __str__(self):
         return self.movie_name
 

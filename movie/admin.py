@@ -8,7 +8,7 @@ class Movieadmin(admin.ModelAdmin):
     list_display_links = ['publishing_date']
     list_filter = ['publishing_date']
     search_fields = ['movie_name', 'movie_content']
-
+    prepopulated_fields = {'slug': ('movie_name',)}
 
 admin.site.register(Movie,Movieadmin)
 admin.site.register(Category)
