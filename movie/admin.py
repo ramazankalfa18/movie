@@ -10,5 +10,10 @@ class Movieadmin(admin.ModelAdmin):
     search_fields = ['movie_name', 'movie_content']
     prepopulated_fields = {'slug': ('movie_name',)}
 
+class Actoradmin(admin.ModelAdmin):
+        list_display = ['actor_name', 'dateofbirth', 'actor_image']
+
 admin.site.register(Movie,Movieadmin)
 admin.site.register(Category)
+admin.site.register(Actor,Actoradmin)
+

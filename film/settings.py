@@ -27,7 +27,21 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+import requests
+username = 'kmprens'
+token = '7ac65e421d39f6a8cc4c15a5f8dad46d8cf47128'
 
+response = requests.get(
+  'https://www.pythonanywhere.com/api/v0/user/{username}/cpu/'.format(
+      username=username
+  ),
+  headers={'Authorization': 'Token {token}'.format(token=token)}
+)
+if response.status_code == 200:
+  print('CPU quota info:')
+  print(response.content)
+else:
+  print('Got unexpected status code {}: {!r}'.format(response.status_code, response.content))
 # Application definition
 
 INSTALLED_APPS = [

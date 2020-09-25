@@ -18,13 +18,13 @@ from django.urls import include, path
 from . import views
 
 urlpatterns = [
-    path('',views.index ,name='index'),
+    path('', views.index, name='index'),
     path(r'^(?P<id>\d+)/$', views.CategorySearch, name='CategorySearch'),
     path(r'^detail/(?P<id>\d+)/$', views.MovieShow, name='MovieShow'),
-
+    path(r'^actor/$', views.Actors, name='Actor'),
+    path(r'^actordetail/(?P<id>\d+)/$', views.actordetail, name='actordetail'),
 ]
 
 admin.site.site_title = 'Film Otağı'
-
 admin.site.site_header = 'Film Otağı'
 admin.site.index_title = 'Film Otağına Hoşgeldiniz '

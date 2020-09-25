@@ -2,7 +2,6 @@
 <div class="slider sliderv2">
 	<div class="container">
 		<div class="row">
-
 	    	<div class="slider-single-item">
 				{% for i in movies %}
 				{% if forloop.counter <= 10 %}
@@ -15,7 +14,7 @@
 			    						<span class="orange"><a href="{% url 'CategorySearch' speaker.id %}">{{speaker}}</a></span>
 									{% endfor %}
 			    				</div>
-			    				<h1><a href="#">{{i.movie_name}}
+			    				<h1><a href="{% url 'MovieShow' i.id %}">{{i.movie_name}}
 									<span>{{i.release_date.year}} </span></a></h1>
 								<div class="social-btn">
 									<a href="#" class="parent-btn"><i class="ion-play"></i> Watch Trailer</a>
@@ -39,15 +38,14 @@
 			    					</ul>
 			    				</div>
 			    				<div class="btn-transform transform-vertical">
-									<div><a href="#" class="item item-1 redbtn">more detail</a></div>
-									<div><a href= "#" class="item item-2 redbtn hvrbtn">more detail</a></div>
+									<div><a href="{% url 'MovieShow' i.id %}" class="item item-1 redbtn">Tıklayınız</a></div>
+									<div><a href= "{% url 'MovieShow' i.id %}" class="item item-2 redbtn hvrbtn">Tıklayınız</a></div>
 								</div>
-
 			    			</div>
 	    				</div>
 	    				<div class="col-md-4 col-sm-12 col-xs-12">
 		    				<div class="mv-img-2">
-			    				<a href="#"><img src="{{i.image}}" alt=""></a>
+			    				<a href="{% url 'MovieShow' i.id %}"><img class="rmz" src="{{i.image}}" alt=""></a>
 			    			</div>
 		    			</div>
 	    			</div>

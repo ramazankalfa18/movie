@@ -60,6 +60,23 @@
 <script src="{% static 'js/plugins.js'%}"></script>
 <script src="{% static 'js/plugins2.js'%}"></script>
 <script src="{% static 'js/custom.js'%}"></script>
+<script type="text/javascript">
+
+	$(document).ready(function() {
+   
+		 $.ajax({
+			 type: 'POST',
+			 data:  {keyname:$('#stop option:selected').val()},
+			  success: function(resp){
+			   for (var i=0; i < resp['routestops'].length;++i){
+   
+				 addOption(document.getElementById("stoplist"), resp['routestops'][i], resp['routestops'][i]);
+			   }
+				}
+		 });
+   }); 
+   
+	</script>
 
 
 

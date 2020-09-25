@@ -11,7 +11,7 @@ class Category(models.Model):
         return self.name
 
 class Movie(models.Model):
-    movie_name= models.CharField ( max_length = 150,verbose_name='Film ismi',null=True)
+    movie_name = models.CharField ( max_length = 150,verbose_name='Film ismi',null=True)
     movie_content=RichTextField ( max_length = 2000,verbose_name='Film açıklama ',null=True)
     release_date = models.DateField(verbose_name='Film çıkış tarihi',null=True)
     imdb_reyting = models.CharField(max_length=10,null=True)
@@ -22,17 +22,33 @@ class Movie(models.Model):
     category = models.ManyToManyField('Category',verbose_name='Kategori',related_name='Movie')
     slug = models.SlugField(max_length=100,unique=True,null=False)
     url = models.CharField(max_length=1000 ,null=True, verbose_name="Film Url")
-
-    def get_absolute_url(self):
-        return reverse('Movie:movie.name', kwargs={'slug': self.slug})
+    actor = models.ManyToManyField('Actor',verbose_name='actor',related_name='Movie')
 
     def __str__(self):
         return self.movie_name
 
     def get_image_path(self):
         return self.image
-    
     class Meta:
         verbose_name = 'Film'
         verbose_name_plural = 'Filmler'
+
+
+class Actor(models.Model):
+    actor_name = models.CharField( max_length=150 , verbose_name='Aktör Adı', null=True)
+    position = models.CharField(max_length=150 , verbose_name='Director/Producer/Writer/Actor and Actress', null=True)
+    country = models.CharField(max_length=150 , verbose_name='Ülke :', null=True)
+    actor_image = models.ImageField(null=True, verbose_name='Aktör Fotoğrafı',upload_to='static/images/Actor')
+    dateofbirth = models.DateField(verbose_name='Doğum tarihi :', null=True)
+    biography = RichTextField(max_length = 20000,verbose_name='Biyografi ',null=True)
+
+    def get_image_path(self):
+        return self.actor_image
+
+    def __str__(self):
+        return self.actor_name
+
+    class Meta:
+        verbose_name = 'Actor'
+
 

@@ -4337,6 +4337,8 @@ ul {
 .movie-item-style-1 img {
   margin-right: 0;
   margin-bottom: 15px;
+  height:100%;
+  width:100%;
 }
 .movie-item-style-1 .hvr-inner {
   position: absolute;
@@ -5966,6 +5968,7 @@ ul {
 .movie-single .movie-img img,
 .movie-single .mv-ceb img {
   width: 100%;
+  height:50%;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -6630,6 +6633,7 @@ ul {
   display: flex;
   flex-direction: row;
   width: 100%;
+  height:10%;
   margin-bottom: 30px;
 }
 @media (max-width: 767px) {
@@ -7214,6 +7218,7 @@ p.ceb-single {
 @media (max-width: 991px) {
   .sliderv2 .movie-item .mv-img-2 {
     display: none;
+    width:100%;
   }
 }
 .sliderv2 .slick-dots {
@@ -8283,4 +8288,10 @@ footer.full-width-ft .ft-copyright {
   color: #8c9296;
   font-family: 'Dosis', sans-serif;
   font-weight: 700;
+}
+.rmz{
+width:100%;
+}
+.acimg{
+width:35%;!important
 }

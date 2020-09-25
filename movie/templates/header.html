@@ -15,7 +15,7 @@
 							<span></span>
 						</div>
 				    </div>
-				    <a href="index.html"><img class="logo" src="{% static 'images/logo.png'%}" alt="" width="119" height="58"></a>
+				    <a href="{% url 'index' %}"><img class="logo" src="{% static 'images/logo.png'%}" alt="" width="119" height="58"></a>
 			    </div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
@@ -30,7 +30,6 @@
 
 							<ul class="dropdown-menu level1">
 								{% for i in categories %}
-
 									<li><a href="{% url 'CategorySearch' i.id %}">{{ i }}</a></li>
 								{% endfor %}
 							</ul>
@@ -47,9 +46,9 @@
 										<li><a href="aboutv2.html">About Us 02</a></li>
 									</ul>
 								</li> -->
-								<li><a href="moviegrid.html">Movie grid</a></li>
+								<li><a href="{% url 'Actor' %}">OYUNCULAR</a></li>
 								<li><a href="moviegridfw.html">movie grid full width</a></li>
-								<li><a href="movielist.html">Movie list</a></li>
+								<li><a href="moviegridfw.html">Movie list</a></li>
 								<li class="it-last"><a href="moviesingle.html">Movie single</a></li>
 							</ul>
 						</li>
