@@ -22,15 +22,14 @@
 					</div>
 					<div class="slider-nav-2 thumb-ft">
 						{% for i in movies %}
-								{% for speaker in i.category.all %}
+						{% for speaker in i.category.all %}
 							{% if speaker.name == "Youtube" %}
 								<div class="item">
 									<div class="trailer-img">
 										<img src="{{i.image}}"  alt="{{i}}" width="350" height="200">
 									</div>
 									<div class="trailer-infor">
-										<h4 class="desc">{{i.name}}</h4>
-										<p>2:37</p>
+										<h4 class="desc">{{i.movie_name}}</h4>
 									</div>
 								</div>
 								{%endif%}

@@ -7,13 +7,9 @@
 		<div class="col-md-12">
 			<div class="title-hd">
 				<h2>{{speaker}}</h2>
-				<a href="#" class="viewall">Hepsini Gör <i class="ion-ios-arrow-right"></i></a>
+				<a href="{% url 'CategorySearch' speaker.id %}" class="viewall">Hepsini Gör <i class="ion-ios-arrow-right"></i></a>
 			</div>
 			<div class="tabs">
-				<ul class="tab-links">
-					<li class="active"><a href="#tab1-h2">#Popular</a></li>
-				</ul>
-
 			    <div class="tab-content">
 			        <div id="tab1-h2" class="tab active">
 			            <div class="row">

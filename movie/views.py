@@ -4,6 +4,7 @@ from django.contrib import admin
 from .models import *
 from django.utils.text import slugify
 from django.db.models import Q
+import datetime
 
 
 def actor(args):
@@ -58,12 +59,11 @@ def CategorySearch(request, id):
     category = Category.objects.get(id=id)
     movie_list = Movie.objects.filter(category__id__in=[id])
 
-    print ("list-->", movie_list)
-    categoriess = kategoridoldur()
+    categoriess = categorifill(),
     context={
         'category':category,
         'movie_list': movie_list,
-        'categories':categoriess
+        'categories':categorifill(),
 
     }
     return render(request, 'CategoryDetail.html', context)
@@ -72,12 +72,50 @@ def MovieShow(request,id):
     movie_show = Movie.objects.get(id=id)
     imbd = range(round(float(movie_show.imdb_reyting)))
     imbd_kalan = (10-(int(round(float(movie_show.imdb_reyting)))))
+    comments = Comment.objects.filter(movie__id= id)
+    movie_top3 = Movie.objects.filter(category=movie_show.category.first())
     context = {
         'movie_show': movie_show,
         'imbd': imbd,
         'imbd_kalan': range(imbd_kalan),
         'categories': categorifill(),
+        'comments': comments,
+        'movie_top3':movie_top3
 
 
     }
+    return render(request, "moviesingle.html", context)
+
+def CommentAdd(request,id):
+    post = request.POST
+    name = post.get("name")
+    soyadi = post.get("surname")
+    mail =post.get("mail")
+    message = post.get("message")
+    print(post)
+    print(">>>>>>>>>>>>>>>>",id)
+    movie = Movie.objects.get(id=id)
+    comment = Comment()
+    comment.movie=movie
+    comment.name = name
+    comment.surname = soyadi
+    comment.mail = mail
+    comment.comment = message
+    comment.publishing_date = datetime.date.today()
+    comment.save()
+
+    movie_show = Movie.objects.get(id=id)
+    imbd = range(round(float(movie_show.imdb_reyting)))
+    imbd_kalan = (10 - (int(round(float(movie_show.imdb_reyting)))))
+    comments = Comment.objects.filter(movie__id=id)
+
+    context = {
+        'movie_show': movie_show,
+        'imbd': imbd,
+        'imbd_kalan': range(imbd_kalan),
+        'categories': categorifill(),
+        'comments': comments
+
+    }
+
     return render(request, "moviesingle.html", context)

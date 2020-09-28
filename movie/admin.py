@@ -16,4 +16,5 @@ class Actoradmin(admin.ModelAdmin):
 admin.site.register(Movie,Movieadmin)
 admin.site.register(Category)
 admin.site.register(Actor,Actoradmin)
+admin.site.register(Comment)
 

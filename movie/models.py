@@ -22,6 +22,7 @@ class Movie(models.Model):
     category = models.ManyToManyField('Category',verbose_name='Kategori',related_name='Movie')
     slug = models.SlugField(max_length=100,unique=True,null=False)
     url = models.CharField(max_length=1000 ,null=True, verbose_name="Film Url")
+    Fragment = models.CharField(max_length=1000 ,null=True, verbose_name="Film Fragmanı")
     actor = models.ManyToManyField('Actor',verbose_name='actor',related_name='Movie')
 
     def __str__(self):
@@ -38,7 +39,7 @@ class Actor(models.Model):
     actor_name = models.CharField( max_length=150 , verbose_name='Aktör Adı', null=True)
     position = models.CharField(max_length=150 , verbose_name='Director/Producer/Writer/Actor and Actress', null=True)
     country = models.CharField(max_length=150 , verbose_name='Ülke :', null=True)
-    actor_image = models.ImageField(null=True, verbose_name='Aktör Fotoğrafı',upload_to='static/images/Actor')
+    actor_image = models.ImageField(null=True, verbose_name='Aktör Fotoğrafı')
     dateofbirth = models.DateField(verbose_name='Doğum tarihi :', null=True)
     biography = RichTextField(max_length = 20000,verbose_name='Biyografi ',null=True)
 
@@ -50,5 +51,20 @@ class Actor(models.Model):
 
     class Meta:
         verbose_name = 'Actor'
+
+
+class Comment(models.Model):
+    movie = models.ForeignKey('Movie', max_length=150 , verbose_name='Movie', null=True, on_delete=models.CASCADE)
+    name = models.CharField( max_length=150 , verbose_name='Adı', null=True)
+    surname = models.CharField( max_length=150 , verbose_name='Soyadı', null=True)
+    mail = models.CharField( max_length=150 , verbose_name='Mail', null=True)
+    comment = models.TextField(max_length=250, verbose_name='Yorum',null=True)
+    publishing_date = models.DateTimeField(auto_now_add=True,verbose_name='Oluşturma tarihi',null=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Yorumlar'
 
 

@@ -23,6 +23,8 @@ urlpatterns = [
     path(r'^detail/(?P<id>\d+)/$', views.MovieShow, name='MovieShow'),
     path(r'^actor/$', views.Actors, name='Actor'),
     path(r'^actordetail/(?P<id>\d+)/$', views.actordetail, name='actordetail'),
+    path(r'^CommentAdd/(?P<id>\d+)/$', views.CommentAdd, name='CommentAdd'),
+
 ]
 
 admin.site.site_title = 'Film Otağı'
