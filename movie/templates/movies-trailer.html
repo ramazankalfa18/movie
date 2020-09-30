@@ -3,78 +3,39 @@
 		<div class="row ipad-width">
 			<div class="col-md-9 col-sm-12 col-xs-12">
 				<div class="title-hd">
-					<h2>in theater</h2>
-					<a href="#" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
+					<h2>Fragmanlar</h2>
 				</div>
 
 				<div class="videos">
 				 	<div class="slider-for-2 video-ft">
-						{% for i in movies %}
-							{% for speaker in i.category.all %}
-								{% if speaker.name == "Youtube" %}
+						{% for movie in movies %}
+						{% if movie.Fragment %}
 								   <div>
-										{{i.url|safe}}
+										{{movie.Fragment|safe}}
 									</div>
 								{% endif %}
 					    	{% endfor %}
-						{% endfor %}
 
 					</div>
 					<div class="slider-nav-2 thumb-ft">
-						{% for i in movies %}
-						{% for speaker in i.category.all %}
-							{% if speaker.name == "Youtube" %}
+						{% for movie in movies %}
+						{% if movie.Fragment %}
 								<div class="item">
 									<div class="trailer-img">
-										<img src="{{i.image}}"  alt="{{i}}" width="350" height="200">
+										<img src="{{movie.image}}"  alt="{{i}}" width="350" height="200">
 									</div>
 									<div class="trailer-infor">
-										<h4 class="desc">{{i.movie_name}}</h4>
+										<h4 class="desc">{{movie.movie_name}}</h4>
 									</div>
 								</div>
-								{%endif%}
-							{% endfor %}
-						{% endfor %}
+									{% endif %}
+					    	{% endfor %}
+
 
 					</div>
 				</div>
 			</div>
-			<!--ÖNE ÇIkAN LEFT BAR END-->
-			<div class="col-md-3 col-sm-12 col-xs-12">
-				<div class="sidebar">
-					<div class="celebrities">
-						<h4 class="sb-title">Spotlight Celebrities</h4>
-						<div class="celeb-item">
-							<a href="#"><img src="{% static 'images/uploads/ava1.jpg'%}" alt="" width="70" height="70"></a>
-							<div class="celeb-author">
-								<h6><a href="#">Samuel N. Jack</a></h6>
-								<span>Actor</span>
-							</div>
-						</div>
-						<div class="celeb-item">
-							<a href="#"><img src="{% static 'images/uploads/ava2.jpg'%}" alt="" width="70" height="70"></a>
-							<div class="celeb-author">
-								<h6><a href="#">Benjamin Carroll</a></h6>
-								<span>Actor</span>
-							</div>
-						</div>
-						<div class="celeb-item">
-							<a href="#"><img src="{% static 'images/uploads/ava3.jpg'%}" alt="" width="70" height="70"></a>
-							<div class="celeb-author">
-								<h6><a href="#">Beverly Griffin</a></h6>
-								<span>Actor</span>
-							</div>
-						</div>
-						<div class="celeb-item">
-							<a href="#"><img src="{% static 'images/uploads/ava4.jpg'%}" alt="" width="70" height="70"></a>
-							<div class="celeb-author">
-								<h6><a href="#">Justin Weaver</a></h6>
-								<span>Actor</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+
 			<!--ÖNE ÇIKAN RIGTH BAR END-->
 		</div>
 	
